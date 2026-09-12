@@ -1,278 +1,486 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suppliers - GrainFlow</title>
-    <link rel="stylesheet" href="../CSS/style.css" />
-  </head>
 
-  <body>
-    <div class="sidebar">
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
 
-    <div class="brand">
-        <div class="brand-icon">🌾</div>
+<body>
 
-        <div>
-            <h2>GrainFlow</h2>
-            <span>Rice Mill Management</span>
+<div class="dashboard-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">🌾</div>
+
+            <div>
+                <h2>GrainFlow</h2>
+                <span>Rice Mill Management</span>
+            </div>
         </div>
-    </div>
 
-    <nav class="sidebar-menu">
+        <nav class="sidebar-menu">
 
-        <a href="../HTML/dashboard.html">
-            🏠 <span>Dashboard</span>
-        </a>
+            <a href="../HTML/dashboard.html">
+                🏠 <span>Dashboard</span>
+            </a>
 
-        <a href="../HTML/inventory.html">
-            🌾 <span>Inventory</span>
-        </a>
+            <a href="../HTML/inventory.html">
+                🌾 <span>Inventory</span>
+            </a>
 
-        <a href="production.html">
-            ⚙️ <span>Production</span>
-        </a>
+            <a href="production.html">
+                ⚙️ <span>Production</span>
+            </a>
 
-        <a href="sales.html">
-            💰 <span>Sales</span>
-        </a>
+            <a href="sales.html">
+                💰 <span>Sales</span>
+            </a>
 
-        <a href="purchases.html">
-            🛒 <span>Purchases</span>
-        </a>
+            <a href="purchases.html">
+                🛒 <span>Purchases</span>
+            </a>
 
-        <a href="customers.html">
-            👥 <span>Customers</span>
-        </a>
+            <a href="customers.html">
+                👥 <span>Customers</span>
+            </a>
 
-        <a href="suppliers.html" class="active">
-            🚚 <span>Suppliers</span>
-        </a>
+            <a href="suppliers.html" class="active">
+                🚚 <span>Suppliers</span>
+            </a>
 
-        <a href="reports.html">
-            📊 <span>Reports</span>
-        </a>
+            <a href="reports.html">
+                📊 <span>Reports</span>
+            </a>
 
-    </nav>
+        </nav>
 
-    <div class="sidebar-bottom">
-        <a href="../HTML/login.html">
-            🚪 <span>Logout</span>
-        </a>
+        <div class="sidebar-bottom">
+            <a href="../index.html">
+                🚪 <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="page-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <h1>Suppliers</h1>
+                <p>Manage suppliers and purchase relationships</p>
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="profile-icon">A</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- SUMMARY CARDS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <span class="stat-icon">🚚</span>
+
+                <div>
+                    <p>Total Suppliers</p>
+                    <h2 id="totalSuppliers">24</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">🌾</span>
+
+                <div>
+                    <p>Active Suppliers</p>
+                    <h2 id="activeSuppliers">22</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">💰</span>
+
+                <div>
+                    <p>Total Purchases</p>
+                    <h2 id="supplierPurchases">₹6,75,000</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-icon">⏳</span>
+
+                <div>
+                    <p>Pending Payments</p>
+                    <h2 id="supplierPending">₹85,000</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUPPLIER SECTION -->
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Supplier Records</h2>
+                    <p>Manage supplier information and accounts</p>
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="openSupplierModal()"
+                >
+                    + Add Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="search-filter">
+
+                <input
+                    type="text"
+                    id="supplierSearch"
+                    placeholder="Search suppliers..."
+                    onkeyup="searchSuppliers()"
+                >
+
+            </div>
+
+
+            <!-- SUPPLIER TABLE -->
+            <div class="table-container">
+
+                <table id="supplierTable">
+
+                    <thead>
+
+                        <tr>
+                            <th>Supplier ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Location</th>
+                            <th>Material</th>
+                            <th>Total Purchases</th>
+                            <th>Outstanding</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>SUP-001</td>
+
+                            <td>Ravi Traders</td>
+
+                            <td>9876543210</td>
+
+                            <td>Nellore</td>
+
+                            <td>Paddy</td>
+
+                            <td>₹1,85,000</td>
+
+                            <td>₹20,000</td>
+
+                            <td>
+                                <span class="status paid">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>SUP-002</td>
+
+                            <td>Green Agro</td>
+
+                            <td>9988776655</td>
+
+                            <td>Vijayawada</td>
+
+                            <td>Paddy</td>
+
+                            <td>₹2,10,000</td>
+
+                            <td>₹35,000</td>
+
+                            <td>
+                                <span class="status paid">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>SUP-003</td>
+
+                            <td>Krishna Suppliers</td>
+
+                            <td>9123456780</td>
+
+                            <td>Guntur</td>
+
+                            <td>Paddy</td>
+
+                            <td>₹1,45,000</td>
+
+                            <td>₹30,000</td>
+
+                            <td>
+                                <span class="status paid">
+                                    Active
+                                </span>
+                            </td>
+
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ADD SUPPLIER MODAL -->
+<div id="supplierModal" class="modal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Add Supplier</h2>
+
+            <span
+                class="close"
+                onclick="closeSupplierModal()"
+            >
+                &times;
+            </span>
+
+        </div>
+
+
+        <form id="supplierForm">
+
+            <div class="form-group">
+
+                <label>Supplier ID</label>
+
+                <input
+                    type="text"
+                    id="supplierId"
+                    placeholder="Enter supplier ID"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Supplier Name</label>
+
+                <input
+                    type="text"
+                    id="supplierName"
+                    placeholder="Enter supplier name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="supplierPhone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    id="supplierLocation"
+                    placeholder="Enter location"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Material</label>
+
+                <select id="supplierMaterial" required>
+
+                    <option value="">
+                        Select Material
+                    </option>
+
+                    <option value="Paddy">
+                        Paddy
+                    </option>
+
+                    <option value="Rice">
+                        Rice
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Total Purchase Amount</label>
+
+                <input
+                    type="number"
+                    id="supplierPurchaseAmount"
+                    min="0"
+                    value="0"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Outstanding Amount</label>
+
+                <input
+                    type="number"
+                    id="supplierOutstanding"
+                    min="0"
+                    value="0"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Status</label>
+
+                <select id="supplierStatus">
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closeSupplierModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Add Supplier
+                </button>
+
+            </div>
+
+        </form>
+
     </div>
 
 </div>
 
-      <nav>
-        <a href="../HTML/dashboard.html">Dashboard</a>
-        <a href="../HTML/inventory.html">Inventory</a>
-        <a href="production.html">Production</a>
-        <a href="sales.html">Sales</a>
-        <a href="purchases.html">Purchases</a>
-        <a href="customers.html">Customers</a>
-        <a href="suppliers.html" class="active">Suppliers</a>
-        <a href="reports.html">Reports</a>
-      </nav>
-    </div>
 
-    <div class="main-content">
-      <div class="topbar">
-        <div>
-          <h1>Suppliers</h1>
-          <p>Manage paddy suppliers and vendor details</p>
-        </div>
+<script src="../js/suppliers.js"></script>
 
-        <div class="admin-profile">
-          <span>Admin</span>
-          👤
-        </div>
-      </div>
-
-      <!-- SUMMARY CARDS -->
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <p>Total Suppliers</p>
-          <h2 id="totalSuppliers">24</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Active Suppliers</p>
-          <h2 id="activeSuppliers">22</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Total Purchases</p>
-          <h2 id="supplierPurchases">₹6,75,000</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Pending Payments</p>
-          <h2 id="supplierPending">₹85,000</h2>
-        </div>
-      </div>
-
-      <!-- ACTION BAR -->
-
-      <div class="inventory-actions">
-        <div class="search-box">
-          <input
-            type="text"
-            id="supplierSearch"
-            placeholder="Search supplier or phone..."
-          />
-        </div>
-
-        <div class="action-buttons">
-          <button class="add-stock-btn" onclick="openSupplierModal()">
-            + Add Supplier
-          </button>
-        </div>
-      </div>
-
-      <!-- SUPPLIER TABLE -->
-
-      <div class="table-container">
-        <table id="supplierTable">
-          <thead>
-            <tr>
-              <th>Supplier ID</th>
-              <th>Supplier Name</th>
-              <th>Phone</th>
-              <th>Location</th>
-              <th>Total Purchases</th>
-              <th>Pending</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td><strong>SUP-001</strong></td>
-              <td>Ravi Agro Traders</td>
-              <td>9876543210</td>
-              <td>Nellore</td>
-              <td>₹2,40,000</td>
-              <td>₹0</td>
-              <td>
-                <span class="status completed"> Active </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>SUP-002</strong></td>
-              <td>Sri Sai Foods</td>
-              <td>9123456780</td>
-              <td>Gudur</td>
-              <td>₹2,00,000</td>
-              <td>₹85,000</td>
-              <td>
-                <span class="status completed"> Active </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td><strong>SUP-003</strong></td>
-              <td>Vijaya Farmers</td>
-              <td>9988776655</td>
-              <td>Ongole</td>
-              <td>₹2,35,000</td>
-              <td>₹0</td>
-              <td>
-                <span class="status pending"> Inactive </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ADD SUPPLIER MODAL -->
-
-    <div class="modal-overlay" id="supplierModal">
-      <div class="modal">
-        <div class="modal-header">
-          <div>
-            <h2>Add Supplier</h2>
-            <p>Create a new supplier record</p>
-          </div>
-
-          <button class="close-btn" onclick="closeSupplierModal()">×</button>
-        </div>
-
-        <form id="supplierForm">
-          <label>Supplier ID</label>
-
-          <input
-            type="text"
-            id="supplierId"
-            placeholder="Example: SUP-004"
-            required
-          />
-
-          <label>Supplier Name</label>
-
-          <input
-            type="text"
-            id="supplierName"
-            placeholder="Enter supplier name"
-            required
-          />
-
-          <label>Phone Number</label>
-
-          <input
-            type="tel"
-            id="supplierPhone"
-            placeholder="Enter phone number"
-            maxlength="10"
-            required
-          />
-
-          <label>Location</label>
-
-          <input
-            type="text"
-            id="supplierLocation"
-            placeholder="Enter location"
-            required
-          />
-
-          <label>Status</label>
-
-          <select id="supplierStatus" required>
-            <option value="">Select Status</option>
-
-            <option value="Active">Active</option>
-
-            <option value="Inactive">Inactive</option>
-          </select>
-
-          <div class="modal-buttons">
-            <button
-              type="button"
-              class="cancel-btn"
-              onclick="closeSupplierModal()"
-            >
-              Cancel
-            </button>
-
-            <button type="submit" class="add-stock-btn">Add Supplier</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <script src="../js/suppliers.js"></script>
-  </body>
+</body>
 </html>
