@@ -1,263 +1,352 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Purchases - GrainFlow</title>
 
-    <link rel="stylesheet" href="../CSS/style.css" />
-  </head>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
 
-  <body>
+<body>
+
+<div class="dashboard-layout">
+
     <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div class="logo">
-        <h2>🌾 GrainFlow</h2>
-        <p>Rice Mill Management</p>
-      </div>
+    <aside class="sidebar">
 
-      <nav class="sidebar-menu">
-        <a href="../HTML/dashboard.html"> 🏠 <span>Dashboard</span> </a>
+        <div class="brand">
+            <div class="brand-icon">🌾</div>
+            <div>
+                <h2>GrainFlow</h2>
+                <span>Rice Mill Management</span>
+            </div>
+        </div>
 
-        <a href="../HTML/inventory.html"> 🌾 <span>Inventory</span> </a>
+        <nav class="sidebar-menu">
 
-        <a href="production.html"> ⚙️ <span>Production</span> </a>
+            <a href="../HTML/dashboard.html">
+                🏠 <span>Dashboard</span>
+            </a>
 
-        <a href="sales.html"> 💰 <span>Sales</span> </a>
+            <a href="../HTML/inventory.html">
+                🌾 <span>Inventory</span>
+            </a>
 
-        <a href="purchases.html" class="active"> 🛒 <span>Purchases</span> </a>
+            <a href="production.html">
+                ⚙️ <span>Production</span>
+            </a>
 
-        <a href="customers.html"> 👥 <span>Customers</span> </a>
+            <a href="sales.html">
+                💰 <span>Sales</span>
+            </a>
 
-        <a href="suppliers.html"> 🚚 <span>Suppliers</span> </a>
+            <a href="purchases.html" class="active">
+                🛒 <span>Purchases</span>
+            </a>
 
-        <a href="reports.html"> 📊 <span>Reports</span> </a>
-      </nav>
-    </div>
+            <a href="customers.html">
+                👥 <span>Customers</span>
+            </a>
+
+            <a href="suppliers.html">
+                🚚 <span>Suppliers</span>
+            </a>
+
+            <a href="reports.html">
+                📊 <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html">
+                🚪 <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
 
     <!-- MAIN CONTENT -->
-    <div class="main-content">
-      <!-- TOPBAR -->
-      <div class="topbar">
-        <div>
-          <h1>Purchases</h1>
-          <p>Manage paddy and other raw material purchases</p>
-        </div>
+    <main class="page-content">
 
-        <div class="admin-profile">
-          <span>Admin</span>
-          👤
-        </div>
-      </div>
+        <!-- TOP BAR -->
+        <header class="topbar">
 
-      <!-- SUMMARY CARDS -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <p>Total Purchases</p>
-          <h2 id="totalPurchases">₹6,75,000</h2>
-        </div>
+            <div>
+                <h1>Purchases</h1>
+                <p>Manage paddy purchases and supplier transactions</p>
+            </div>
 
-        <div class="stat-card">
-          <p>Paddy Purchased</p>
-          <h2 id="paddyPurchased">8,500 Kg</h2>
-        </div>
+            <div class="admin-profile">
+                <div class="profile-icon">A</div>
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
 
-        <div class="stat-card">
-          <p>Total Suppliers</p>
-          <h2>24</h2>
-        </div>
+        </header>
 
-        <div class="stat-card">
-          <p>Pending Payments</p>
-          <h2 id="pendingPurchase">₹85,000</h2>
-        </div>
-      </div>
 
-      <!-- ACTION BAR -->
-      <div class="inventory-actions">
-        <div class="search-box">
-          <input
-            type="text"
-            id="purchaseSearch"
-            placeholder="Search supplier or purchase..."
-          />
-        </div>
+        <!-- SUMMARY CARDS -->
+        <section class="stats-grid">
 
-        <div class="action-buttons">
-          <button class="add-stock-btn" onclick="openPurchaseModal()">
-            + New Purchase
-          </button>
-        </div>
-      </div>
+            <div class="stat-card">
+                <span class="stat-icon">💰</span>
+                <div>
+                    <p>Total Purchases</p>
+                    <h2 id="totalPurchases">₹6,75,000</h2>
+                </div>
+            </div>
 
-      <!-- PURCHASE TABLE -->
-      <div class="table-container">
-        <table id="purchaseTable">
-          <thead>
-            <tr>
-              <th>Purchase ID</th>
-              <th>Date</th>
-              <th>Supplier</th>
-              <th>Material</th>
-              <th>Quantity</th>
-              <th>Amount</th>
-              <th>Payment</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+            <div class="stat-card">
+                <span class="stat-icon">🌾</span>
+                <div>
+                    <p>Paddy Purchased</p>
+                    <h2 id="totalPaddyPurchased">8,500 Kg</h2>
+                </div>
+            </div>
 
-          <tbody>
-            <tr>
-              <td><strong>PUR-001</strong></td>
-              <td>12 Sep 2026</td>
-              <td>Ravi Agro Traders</td>
-              <td>Paddy</td>
-              <td>3,000 Kg</td>
-              <td>₹2,40,000</td>
-              <td>
-                <span class="status completed"> Paid </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
+            <div class="stat-card">
+                <span class="stat-icon">🚚</span>
+                <div>
+                    <p>Total Suppliers</p>
+                    <h2 id="totalSuppliers">24</h2>
+                </div>
+            </div>
 
-            <tr>
-              <td><strong>PUR-002</strong></td>
-              <td>11 Sep 2026</td>
-              <td>Sri Sai Foods</td>
-              <td>Paddy</td>
-              <td>2,500 Kg</td>
-              <td>₹2,00,000</td>
-              <td>
-                <span class="status pending"> Pending </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
+            <div class="stat-card">
+                <span class="stat-icon">⏳</span>
+                <div>
+                    <p>Pending Payments</p>
+                    <h2 id="pendingPayments">₹85,000</h2>
+                </div>
+            </div>
 
-            <tr>
-              <td><strong>PUR-003</strong></td>
-              <td>10 Sep 2026</td>
-              <td>Vijaya Farmers</td>
-              <td>Paddy</td>
-              <td>3,000 Kg</td>
-              <td>₹2,35,000</td>
-              <td>
-                <span class="status completed"> Paid </span>
-              </td>
-              <td>
-                <button class="edit-btn">Edit</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        </section>
 
-    <!-- NEW PURCHASE MODAL -->
-    <div class="modal-overlay" id="purchaseModal">
-      <div class="modal">
+
+        <!-- PURCHASE SECTION -->
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Purchase Records</h2>
+                    <p>Recent paddy purchase transactions</p>
+                </div>
+
+                <button class="primary-btn" onclick="openPurchaseModal()">
+                    + New Purchase
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH -->
+            <div class="search-filter">
+
+                <input
+                    type="text"
+                    id="purchaseSearch"
+                    placeholder="Search purchases..."
+                    onkeyup="searchPurchases()"
+                >
+
+            </div>
+
+
+            <!-- TABLE -->
+            <div class="table-container">
+
+                <table id="purchaseTable">
+
+                    <thead>
+                        <tr>
+                            <th>Purchase ID</th>
+                            <th>Date</th>
+                            <th>Supplier</th>
+                            <th>Material</th>
+                            <th>Quantity</th>
+                            <th>Price/Kg</th>
+                            <th>Total Amount</th>
+                            <th>Payment</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>PUR-001</td>
+                            <td>12 Sep 2026</td>
+                            <td>Ravi Traders</td>
+                            <td>Paddy</td>
+                            <td>2,500 Kg</td>
+                            <td>₹28</td>
+                            <td>₹70,000</td>
+                            <td><span class="status paid">Paid</span></td>
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PUR-002</td>
+                            <td>11 Sep 2026</td>
+                            <td>Green Agro</td>
+                            <td>Paddy</td>
+                            <td>3,000 Kg</td>
+                            <td>₹27</td>
+                            <td>₹81,000</td>
+                            <td><span class="status pending">Pending</span></td>
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PUR-003</td>
+                            <td>10 Sep 2026</td>
+                            <td>Krishna Suppliers</td>
+                            <td>Paddy</td>
+                            <td>3,000 Kg</td>
+                            <td>₹29</td>
+                            <td>₹87,000</td>
+                            <td><span class="status paid">Paid</span></td>
+                            <td>
+                                <button class="action-btn">✏️</button>
+                                <button class="action-btn">🗑️</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- NEW PURCHASE MODAL -->
+<div id="purchaseModal" class="modal">
+
+    <div class="modal-content">
+
         <div class="modal-header">
-          <div>
             <h2>New Purchase</h2>
-            <p>Create a new purchase record</p>
-          </div>
-
-          <button class="close-btn" onclick="closePurchaseModal()">×</button>
+            <span class="close" onclick="closePurchaseModal()">&times;</span>
         </div>
 
         <form id="purchaseForm">
-          <label>Purchase ID</label>
 
-          <input
-            type="text"
-            id="purchaseId"
-            placeholder="Example: PUR-004"
-            required
-          />
+            <div class="form-group">
+                <label>Purchase ID</label>
+                <input type="text" id="purchaseId" required>
+            </div>
 
-          <label>Purchase Date</label>
+            <div class="form-group">
+                <label>Purchase Date</label>
+                <input type="date" id="purchaseDate" required>
+            </div>
 
-          <input type="date" id="purchaseDate" required />
+            <div class="form-group">
+                <label>Supplier</label>
+                <input
+                    type="text"
+                    id="supplierName"
+                    placeholder="Enter supplier name"
+                    required
+                >
+            </div>
 
-          <label>Supplier</label>
+            <div class="form-group">
+                <label>Material</label>
 
-          <input
-            type="text"
-            id="purchaseSupplier"
-            placeholder="Enter supplier name"
-            required
-          />
+                <select id="material" required>
+                    <option value="">Select Material</option>
+                    <option value="Paddy">Paddy</option>
+                    <option value="Rice">Rice</option>
+                </select>
 
-          <label>Material</label>
+            </div>
 
-          <select id="purchaseMaterial" required>
-            <option value="">Select Material</option>
+            <div class="form-group">
+                <label>Quantity (Kg)</label>
+                <input
+                    type="number"
+                    id="purchaseQuantity"
+                    min="1"
+                    required
+                >
+            </div>
 
-            <option value="Paddy">Paddy</option>
+            <div class="form-group">
+                <label>Price per Kg (₹)</label>
+                <input
+                    type="number"
+                    id="purchasePrice"
+                    min="0"
+                    required
+                >
+            </div>
 
-            <option value="Rice Bran">Rice Bran</option>
+            <div class="form-group">
+                <label>Total Amount</label>
+                <input
+                    type="text"
+                    id="purchaseTotal"
+                    value="₹0"
+                    readonly
+                >
+            </div>
 
-            <option value="Broken Rice">Broken Rice</option>
-          </select>
+            <div class="form-group">
+                <label>Payment Status</label>
 
-          <label>Quantity (Kg)</label>
+                <select id="paymentStatus" required>
+                    <option value="Paid">Paid</option>
+                    <option value="Pending">Pending</option>
+                </select>
 
-          <input
-            type="number"
-            id="purchaseQuantity"
-            placeholder="Enter quantity"
-            min="1"
-            required
-          />
+            </div>
 
-          <label>Price per Kg (₹)</label>
+            <div class="modal-actions">
 
-          <input
-            type="number"
-            id="purchasePrice"
-            placeholder="Enter price per Kg"
-            min="1"
-            required
-          />
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    onclick="closePurchaseModal()"
+                >
+                    Cancel
+                </button>
 
-          <label>Total Amount (₹)</label>
+                <button
+                    type="submit"
+                    class="primary-btn"
+                >
+                    Add Purchase
+                </button>
 
-          <input
-            type="number"
-            id="purchaseAmount"
-            placeholder="Auto calculated"
-            readonly
-          />
+            </div>
 
-          <label>Payment Status</label>
-
-          <select id="purchasePayment" required>
-            <option value="">Select Payment Status</option>
-
-            <option value="Paid">Paid</option>
-
-            <option value="Pending">Pending</option>
-          </select>
-
-          <div class="modal-buttons">
-            <button
-              type="button"
-              class="cancel-btn"
-              onclick="closePurchaseModal()"
-            >
-              Cancel
-            </button>
-
-            <button type="submit" class="add-stock-btn">Add Purchase</button>
-          </div>
         </form>
-      </div>
+
     </div>
 
-    <script src="../js/purchases.js"></script>
-  </body>
+</div>
+
+
+<script src="../js/purchases.js"></script>
+
+</body>
 </html>
