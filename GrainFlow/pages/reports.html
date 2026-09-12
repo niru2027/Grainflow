@@ -1,190 +1,353 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports - GrainFlow</title>
 
-    <link rel="stylesheet" href="../CSS/style.css" />
-  </head>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
 
-  <body>
+<body>
+
+<div class="dashboard-layout">
+
     <!-- SIDEBAR -->
-    <div class="sidebar">
-      <div class="logo">
-        <h2>🌾 GrainFlow</h2>
-        <p>Rice Mill Management</p>
-      </div>
-      <nav class="sidebar-menu">
-        <a href="../HTML/dashboard.html"> 🏠 <span>Dashboard</span> </a>
+    <aside class="sidebar">
 
-        <a href="../HTML/inventory.html"> 🌾 <span>Inventory</span> </a>
+        <div class="brand">
+            <div class="brand-icon">🌾</div>
 
-        <a href="production.html"> ⚙️ <span>Production</span> </a>
+            <div>
+                <h2>GrainFlow</h2>
+                <span>Rice Mill Management</span>
+            </div>
+        </div>
 
-        <a href="sales.html"> 💰 <span>Sales</span> </a>
+        <nav class="sidebar-menu">
 
-        <a href="purchases.html"> 🛒 <span>Purchases</span> </a>
+            <a href="../HTML/dashboard.html">
+                🏠 <span>Dashboard</span>
+            </a>
 
-        <a href="customers.html"> 👥 <span>Customers</span> </a>
+            <a href="../HTML/inventory.html">
+                🌾 <span>Inventory</span>
+            </a>
 
-        <a href="suppliers.html"> 🚚 <span>Suppliers</span> </a>
+            <a href="production.html">
+                ⚙️ <span>Production</span>
+            </a>
 
-        <a href="reports.html" class="active"> 📊 <span>Reports</span> </a>
-      </nav>
-    </div>
+            <a href="sales.html">
+                💰 <span>Sales</span>
+            </a>
+
+            <a href="purchases.html">
+                🛒 <span>Purchases</span>
+            </a>
+
+            <a href="customers.html">
+                👥 <span>Customers</span>
+            </a>
+
+            <a href="suppliers.html">
+                🚚 <span>Suppliers</span>
+            </a>
+
+            <a href="reports.html" class="active">
+                📊 <span>Reports</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html">
+                🚪 <span>Logout</span>
+            </a>
+        </div>
+
+    </aside>
+
 
     <!-- MAIN CONTENT -->
-    <div class="main-content">
-      <!-- TOPBAR -->
-      <div class="topbar">
-        <div>
-          <h1>Reports</h1>
-          <p>Analyze rice mill business performance</p>
-        </div>
+    <main class="page-content">
 
-        <div class="admin-profile">
-          <span>Admin</span>
-          👤
-        </div>
-      </div>
+        <!-- TOP BAR -->
+        <header class="topbar">
 
-      <!-- SUMMARY CARDS -->
-
-      <div class="stats-grid">
-        <div class="stat-card">
-          <p>Total Revenue</p>
-          <h2 id="reportRevenue">₹8,45,000</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Total Purchases</p>
-          <h2 id="reportPurchases">₹6,75,000</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Rice Produced</p>
-          <h2 id="reportProduction">3,970 Kg</h2>
-        </div>
-
-        <div class="stat-card">
-          <p>Profit Estimate</p>
-          <h2 id="reportProfit">₹1,70,000</h2>
-        </div>
-      </div>
-
-      <!-- REPORT FILTER -->
-
-      <div class="inventory-actions">
-        <div class="search-box">
-          <select id="reportType">
-            <option value="overview">Business Overview</option>
-
-            <option value="sales">Sales Report</option>
-
-            <option value="production">Production Report</option>
-
-            <option value="purchase">Purchase Report</option>
-          </select>
-        </div>
-
-        <div class="action-buttons">
-          <button class="add-stock-btn" onclick="generateReport()">
-            Generate Report
-          </button>
-        </div>
-      </div>
-
-      <!-- REPORT CARDS -->
-
-      <div class="dashboard-grid">
-        <div class="dashboard-card">
-          <div class="card-header">
             <div>
-              <h3>Monthly Sales</h3>
-              <p>Sales performance</p>
-            </div>
-          </div>
-
-          <div class="report-bars">
-            <div class="report-row">
-              <span>Jan</span>
-              <div class="bar">
-                <span style="width: 55%"></span>
-              </div>
-              <strong>₹1.2L</strong>
+                <h1>Reports</h1>
+                <p>Analyze rice mill business performance</p>
             </div>
 
-            <div class="report-row">
-              <span>Feb</span>
-              <div class="bar">
-                <span style="width: 70%"></span>
-              </div>
-              <strong>₹1.5L</strong>
+            <div class="admin-profile">
+
+                <div class="profile-icon">A</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+
             </div>
 
-            <div class="report-row">
-              <span>Mar</span>
-              <div class="bar">
-                <span style="width: 85%"></span>
-              </div>
-              <strong>₹1.8L</strong>
+        </header>
+
+
+        <!-- SUMMARY CARDS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <span class="stat-icon">💰</span>
+
+                <div>
+                    <p>Total Revenue</p>
+                    <h2>₹8,45,000</h2>
+                </div>
+
             </div>
 
-            <div class="report-row">
-              <span>Apr</span>
-              <div class="bar">
-                <span style="width: 65%"></span>
-              </div>
-              <strong>₹1.4L</strong>
-            </div>
-          </div>
-        </div>
 
-        <div class="dashboard-card">
-          <div class="card-header">
-            <div>
-              <h3>Monthly Production</h3>
-              <p>Production performance</p>
-            </div>
-          </div>
+            <div class="stat-card">
 
-          <div class="report-bars">
-            <div class="report-row">
-              <span>Jan</span>
-              <div class="bar">
-                <span style="width: 60%"></span>
-              </div>
-              <strong>3,200 Kg</strong>
+                <span class="stat-icon">🛒</span>
+
+                <div>
+                    <p>Total Purchases</p>
+                    <h2>₹6,75,000</h2>
+                </div>
+
             </div>
 
-            <div class="report-row">
-              <span>Feb</span>
-              <div class="bar">
-                <span style="width: 75%"></span>
-              </div>
-              <strong>3,800 Kg</strong>
+
+            <div class="stat-card">
+
+                <span class="stat-icon">🌾</span>
+
+                <div>
+                    <p>Rice Produced</p>
+                    <h2>3,970 Kg</h2>
+                </div>
+
             </div>
 
-            <div class="report-row">
-              <span>Mar</span>
-              <div class="bar">
-                <span style="width: 90%"></span>
-              </div>
-              <strong>4,200 Kg</strong>
+
+            <div class="stat-card">
+
+                <span class="stat-icon">📈</span>
+
+                <div>
+                    <p>Profit Estimate</p>
+                    <h2>₹1,70,000</h2>
+                </div>
+
             </div>
 
-            <div class="report-row">
-              <span>Apr</span>
-              <div class="bar">
-                <span style="width: 70%"></span>
-              </div>
-              <strong>3,600 Kg</strong>
+        </section>
+
+
+        <!-- REPORT GENERATOR -->
+        <section class="content-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Generate Report</h2>
+                    <p>Select a report type to analyze business data</p>
+                </div>
+
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </body>
+
+
+            <div class="report-controls">
+
+                <select id="reportType">
+
+                    <option value="Business Overview">
+                        Business Overview
+                    </option>
+
+                    <option value="Sales Report">
+                        Sales Report
+                    </option>
+
+                    <option value="Production Report">
+                        Production Report
+                    </option>
+
+                    <option value="Purchase Report">
+                        Purchase Report
+                    </option>
+
+                </select>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="generateReport()"
+                >
+                    Generate Report
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MONTHLY SALES -->
+        <section class="content-card report-table-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Monthly Sales</h2>
+                    <p>Sales performance during the year</p>
+                </div>
+
+            </div>
+
+
+            <div class="report-bars">
+
+                <div class="report-row">
+                    <span>Jan</span>
+                    <div class="bar">
+                        <span style="width:65%"></span>
+                    </div>
+                    <strong>₹58K</strong>
+                </div>
+
+                <div class="report-row">
+                    <span>Feb</span>
+                    <div class="bar">
+                        <span style="width:72%"></span>
+                    </div>
+                    <strong>₹64K</strong>
+                </div>
+
+                <div class="report-row">
+                    <span>Mar</span>
+                    <div class="bar">
+                        <span style="width:80%"></span>
+                    </div>
+                    <strong>₹72K</strong>
+                </div>
+
+                <div class="report-row">
+                    <span>Apr</span>
+                    <div class="bar">
+                        <span style="width:68%"></span>
+                    </div>
+                    <strong>₹61K</strong>
+                </div>
+
+                <div class="report-row">
+                    <span>May</span>
+                    <div class="bar">
+                        <span style="width:88%"></span>
+                    </div>
+                    <strong>₹79K</strong>
+                </div>
+
+                <div class="report-row">
+                    <span>Jun</span>
+                    <div class="bar">
+                        <span style="width:95%"></span>
+                    </div>
+                    <strong>₹85K</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCTION SUMMARY -->
+        <section class="content-card report-table-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Production Summary</h2>
+                    <p>Current production performance</p>
+                </div>
+
+            </div>
+
+
+            <div class="report-summary">
+
+                <div>
+                    <span>Total Paddy Used</span>
+                    <strong>7,500 Kg</strong>
+                </div>
+
+                <div>
+                    <span>Total Rice Produced</span>
+                    <strong>3,970 Kg</strong>
+                </div>
+
+                <div>
+                    <span>By Product</span>
+                    <strong>1,125 Kg</strong>
+                </div>
+
+                <div>
+                    <span>Average Efficiency</span>
+                    <strong>75%</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUSINESS SUMMARY -->
+        <section class="content-card report-table-card">
+
+            <div class="section-header">
+
+                <div>
+                    <h2>Business Summary</h2>
+                    <p>Overall financial performance</p>
+                </div>
+
+            </div>
+
+
+            <div class="report-summary">
+
+                <div>
+                    <span>Total Revenue</span>
+                    <strong>₹8,45,000</strong>
+                </div>
+
+                <div>
+                    <span>Total Purchases</span>
+                    <strong>₹6,75,000</strong>
+                </div>
+
+                <div>
+                    <span>Gross Difference</span>
+                    <strong>₹1,70,000</strong>
+                </div>
+
+                <div>
+                    <span>Pending Payments</span>
+                    <strong>₹85,000</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="../js/reports.js"></script>
+
+</body>
 </html>
