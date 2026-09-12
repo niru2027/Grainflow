@@ -26,7 +26,7 @@
         <h2>Welcome Back</h2>
         <p class="subtitle">Login to your GrainFlow account</p>
 
-        <form>
+        <form onsubmit="loginUser(event)">
           <label>Email Address</label>
           <input type="email" placeholder="Enter your email" required />
 
@@ -48,5 +48,11 @@
         <p class="footer-text">GrainFlow © 2026</p>
       </div>
     </div>
+    <script>
+    function loginUser(event) {
+        event.preventDefault();
+        window.location.href = "HTML/dashboard.html";
+    }
+</script>
   </body>
 </html>
