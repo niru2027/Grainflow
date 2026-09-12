@@ -10,177 +10,346 @@
   </head>
 
   <body>
-    <div class="dashboard-layout">
-      <!-- SIDEBAR -->
+    <div class="dashboard">
+
+      <!-- ================= SIDEBAR ================= -->
       <aside class="sidebar">
-        <div class="logo">
-          <h2>GrainFlow</h2>
-          <span>Rice Mill Management</span>
+
+        <div class="brand">
+          <div class="brand-icon">🌾</div>
+
+          <div>
+            <h2>GrainFlow</h2>
+            <span>Rice Mill Management</span>
+          </div>
         </div>
 
         <nav class="sidebar-menu">
-          <a href="../HTML/dashboard.html"> 🏠 <span>Dashboard</span> </a>
 
-          <a href="../HTML/inventory.html"> 🌾 <span>Inventory</span> </a>
+          <a href="../HTML/dashboard.html">
+            🏠 <span>Dashboard</span>
+          </a>
 
-          <a href="production.html"> ⚙️ <span>Production</span> </a>
+          <a href="../HTML/inventory.html">
+            🌾 <span>Inventory</span>
+          </a>
 
-          <a href="sales.html" class="active"> 💰 <span>Sales</span> </a>
+          <a href="production.html">
+            ⚙️ <span>Production</span>
+          </a>
 
-          <a href="purchases.html"> 🛒 <span>Purchases</span> </a>
+          <a href="sales.html" class="active">
+            💰 <span>Sales</span>
+          </a>
 
-          <a href="customers.html"> 👥 <span>Customers</span> </a>
+          <a href="purchases.html">
+            🛒 <span>Purchases</span>
+          </a>
 
-          <a href="suppliers.html"> 🚚 <span>Suppliers</span> </a>
+          <a href="customers.html">
+            👥 <span>Customers</span>
+          </a>
 
-          <a href="reports.html"> 📊 <span>Reports</span> </a>
+          <a href="suppliers.html">
+            🚚 <span>Suppliers</span>
+          </a>
+
+          <a href="reports.html">
+            📊 <span>Reports</span>
+          </a>
+
         </nav>
+
+        <div class="sidebar-bottom">
+          <a href="../index.html">
+            🚪 <span>Logout</span>
+          </a>
+        </div>
+
       </aside>
 
-      <!-- MAIN CONTENT -->
+
+      <!-- ================= MAIN CONTENT ================= -->
       <main class="main-content">
+
         <!-- TOPBAR -->
         <header class="topbar">
+
           <div>
             <h1>Sales</h1>
             <p>Manage rice sales and customer orders</p>
           </div>
 
-          <div class="admin-profile">
-            <strong>Admin</strong>
+          <div class="profile">
+            <div class="profile-icon">A</div>
+
+            <div>
+              <strong>Admin</strong>
+              <small>Administrator</small>
+            </div>
           </div>
+
         </header>
 
-        <!-- CONTENT -->
+
+        <!-- ================= SALES CONTENT ================= -->
         <section class="page-content">
-          <div class="stats-grid">
+
+          <!-- STAT CARDS -->
+          <section class="stats">
+
             <div class="stat-card">
               <div class="stat-icon">₹</div>
+
               <div>
-                <h2 id="totalSales">₹8,45,000</h2>
                 <p>Total Sales</p>
+                <h2 id="totalSales">₹8,45,000</h2>
+                <span>Sales Revenue</span>
               </div>
             </div>
+
 
             <div class="stat-card">
               <div class="stat-icon">📦</div>
+
               <div>
-                <h2 id="totalBags">1,245</h2>
                 <p>Total Bags Sold</p>
+                <h2 id="totalBags">1,245</h2>
+                <span>Rice Bags</span>
               </div>
             </div>
+
 
             <div class="stat-card">
               <div class="stat-icon">👥</div>
+
               <div>
-                <h2>86</h2>
                 <p>Total Customers</p>
+                <h2>86</h2>
+                <span>Active Customers</span>
               </div>
             </div>
+
 
             <div class="stat-card">
               <div class="stat-icon">⏳</div>
+
               <div>
-                <h2 id="pendingPayments">₹42,500</h2>
                 <p>Pending Payments</p>
+                <h2 id="pendingPayments">₹42,500</h2>
+                <span>Outstanding</span>
               </div>
             </div>
-          </div>
-          <div class="inventory-actions">
-            <div class="search-box">
-              <input
-                type="text"
-                id="salesSearch"
-                placeholder="Search customer or invoice..."
-              />
+
+          </section>
+
+
+          <!-- SEARCH + ACTION -->
+          <section class="inventory-actions">
+
+            <div>
+              <h3>Sales Records</h3>
+              <p>Manage customer sales and payments.</p>
             </div>
 
             <div class="action-buttons">
-              <button class="add-stock-btn" onclick="openSalesModal()">
+
+              <div class="search-box">
+                <input
+                  type="text"
+                  id="salesSearch"
+                  placeholder="Search customer or invoice..."
+                />
+              </div>
+
+              <button
+                class="add-stock-btn"
+                onclick="openSalesModal()"
+              >
                 + New Sale
               </button>
+
             </div>
-          </div>
-          <div class="table-container">
-            <table id="salesTable">
-              <thead>
-                <tr>
-                  <th>Invoice</th>
-                  <th>Date</th>
-                  <th>Customer</th>
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Amount</th>
-                  <th>Payment</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
 
-              <tbody>
-                <tr>
-                  <td><strong>INV-001</strong></td>
-                  <td>12 Sep 2026</td>
-                  <td>Ravi Traders</td>
-                  <td>Sona Masuri</td>
-                  <td>100 Bags</td>
-                  <td>₹1,20,000</td>
-                  <td>
-                    <span class="status completed">Paid</span>
-                  </td>
-                  <td>
-                    <button class="edit-btn">Edit</button>
-                  </td>
-                </tr>
+          </section>
 
-                <tr>
-                  <td><strong>INV-002</strong></td>
-                  <td>11 Sep 2026</td>
-                  <td>Sri Lakshmi Stores</td>
-                  <td>Basmati Rice</td>
-                  <td>75 Bags</td>
-                  <td>₹1,05,000</td>
-                  <td>
-                    <span class="status pending">Pending</span>
-                  </td>
-                  <td>
-                    <button class="edit-btn">Edit</button>
-                  </td>
-                </tr>
 
-                <tr>
-                  <td><strong>INV-003</strong></td>
-                  <td>10 Sep 2026</td>
-                  <td>Vijaya Enterprises</td>
-                  <td>Sona Masuri</td>
-                  <td>150 Bags</td>
-                  <td>₹1,80,000</td>
-                  <td>
-                    <span class="status completed">Paid</span>
-                  </td>
-                  <td>
-                    <button class="edit-btn">Edit</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <!-- SALES TABLE -->
+          <section class="panel transactions">
+
+            <div class="panel-header">
+
+              <div>
+                <h3>Recent Sales</h3>
+                <p>Latest customer sales transactions</p>
+              </div>
+
+              <select id="paymentFilter">
+                <option value="all">All Payments</option>
+                <option value="Paid">Paid</option>
+                <option value="Pending">Pending</option>
+              </select>
+
+            </div>
+
+
+            <div class="table-container">
+
+              <table id="salesTable">
+
+                <thead>
+                  <tr>
+                    <th>Invoice</th>
+                    <th>Date</th>
+                    <th>Customer</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+
+
+                <tbody>
+
+                  <tr>
+
+                    <td>
+                      <strong>INV-001</strong>
+                    </td>
+
+                    <td>12 Sep 2026</td>
+
+                    <td>Ravi Traders</td>
+
+                    <td>Sona Masuri</td>
+
+                    <td>100 Bags</td>
+
+                    <td>₹1,20,000</td>
+
+                    <td>
+                      <span class="status completed">
+                        Paid
+                      </span>
+                    </td>
+
+                    <td>
+                      <button class="edit-btn">
+                        Edit
+                      </button>
+                    </td>
+
+                  </tr>
+
+
+                  <tr>
+
+                    <td>
+                      <strong>INV-002</strong>
+                    </td>
+
+                    <td>11 Sep 2026</td>
+
+                    <td>Sri Lakshmi Stores</td>
+
+                    <td>Basmati Rice</td>
+
+                    <td>75 Bags</td>
+
+                    <td>₹1,05,000</td>
+
+                    <td>
+                      <span class="status pending">
+                        Pending
+                      </span>
+                    </td>
+
+                    <td>
+                      <button class="edit-btn">
+                        Edit
+                      </button>
+                    </td>
+
+                  </tr>
+
+
+                  <tr>
+
+                    <td>
+                      <strong>INV-003</strong>
+                    </td>
+
+                    <td>10 Sep 2026</td>
+
+                    <td>Vijaya Enterprises</td>
+
+                    <td>Sona Masuri</td>
+
+                    <td>150 Bags</td>
+
+                    <td>₹1,80,000</td>
+
+                    <td>
+                      <span class="status completed">
+                        Paid
+                      </span>
+                    </td>
+
+                    <td>
+                      <button class="edit-btn">
+                        Edit
+                      </button>
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          </section>
+
         </section>
+
       </main>
+
     </div>
-    <!-- NEW SALE MODAL -->
-    <div class="modal-overlay" id="salesModal">
+
+
+    <!-- ================= NEW SALE MODAL ================= -->
+
+    <div
+      class="modal-overlay"
+      id="salesModal"
+    >
+
       <div class="modal">
+
         <div class="modal-header">
+
           <div>
             <h2>New Sale</h2>
             <p>Create a new rice sales record</p>
           </div>
 
-          <button class="close-btn" onclick="closeSalesModal()">×</button>
+          <button
+            class="close-btn"
+            onclick="closeSalesModal()"
+          >
+            ×
+          </button>
+
         </div>
 
+
         <form id="salesForm">
+
           <label>Invoice Number</label>
+
           <input
             type="text"
             id="invoiceNumber"
@@ -188,10 +357,18 @@
             required
           />
 
+
           <label>Sale Date</label>
-          <input type="date" id="saleDate" required />
+
+          <input
+            type="date"
+            id="saleDate"
+            required
+          />
+
 
           <label>Customer</label>
+
           <input
             type="text"
             id="customerName"
@@ -199,15 +376,35 @@
             required
           />
 
+
           <label>Product</label>
-          <select id="saleProduct" required>
-            <option value="">Select Product</option>
-            <option value="Sona Masuri">Sona Masuri</option>
-            <option value="Basmati Rice">Basmati Rice</option>
-            <option value="Broken Rice">Broken Rice</option>
+
+          <select
+            id="saleProduct"
+            required
+          >
+
+            <option value="">
+              Select Product
+            </option>
+
+            <option value="Sona Masuri">
+              Sona Masuri
+            </option>
+
+            <option value="Basmati Rice">
+              Basmati Rice
+            </option>
+
+            <option value="Broken Rice">
+              Broken Rice
+            </option>
+
           </select>
 
+
           <label>Quantity (Bags)</label>
+
           <input
             type="number"
             id="saleQuantity"
@@ -215,7 +412,10 @@
             min="1"
             required
           />
+
+
           <label>Price per Bag (₹)</label>
+
           <input
             type="number"
             id="pricePerBag"
@@ -224,7 +424,9 @@
             required
           />
 
+
           <label>Total Amount (₹)</label>
+
           <input
             type="number"
             id="saleAmount"
@@ -233,20 +435,31 @@
             readonly
           />
 
+
           <label>Payment Status</label>
-          <select id="paymentStatus" required>
-            <option value="">Select Payment Status</option>
-            <option value="Paid">Paid</option>
-            <option value="Pending">Pending</option>
+
+          <select
+            id="paymentStatus"
+            required
+          >
+
+            <option value="">
+              Select Payment Status
+            </option>
+
+            <option value="Paid">
+              Paid
+            </option>
+
+            <option value="Pending">
+              Pending
+            </option>
+
           </select>
 
-          <select id="paymentFilter">
-            <option value="all">All Payments</option>
-            <option value="Paid">Paid</option>
-            <option value="Pending">Pending</option>
-          </select>
 
           <div class="modal-buttons">
+
             <button
               type="button"
               class="cancel-btn"
@@ -255,12 +468,24 @@
               Cancel
             </button>
 
-            <button type="submit" class="add-stock-btn">Add Sale</button>
+            <button
+              type="submit"
+              class="add-stock-btn"
+            >
+              Add Sale
+            </button>
+
           </div>
+
         </form>
+
       </div>
+
     </div>
 
+
+    <!-- SALES JAVASCRIPT -->
     <script src="../js/sales.js"></script>
+
   </body>
 </html>
