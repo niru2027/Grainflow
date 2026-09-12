@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Reports - GrainFlow</title>
+
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="logo">
+        <h2>🌾 GrainFlow</h2>
+        <p>Rice Mill Management</p>
+      </div>
+      <nav class="sidebar-menu">
+        <a href="../HTML/dashboard.html"> 🏠 <span>Dashboard</span> </a>
+
+        <a href="../HTML/inventory.html"> 🌾 <span>Inventory</span> </a>
+
+        <a href="production.html"> ⚙️ <span>Production</span> </a>
+
+        <a href="sales.html"> 💰 <span>Sales</span> </a>
+
+        <a href="purchases.html"> 🛒 <span>Purchases</span> </a>
+
+        <a href="customers.html"> 👥 <span>Customers</span> </a>
+
+        <a href="suppliers.html"> 🚚 <span>Suppliers</span> </a>
+
+        <a href="reports.html" class="active"> 📊 <span>Reports</span> </a>
+      </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div>
+          <h1>Reports</h1>
+          <p>Analyze rice mill business performance</p>
+        </div>
+
+        <div class="admin-profile">
+          <span>Admin</span>
+          👤
+        </div>
+      </div>
+
+      <!-- SUMMARY CARDS -->
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <p>Total Revenue</p>
+          <h2 id="reportRevenue">₹8,45,000</h2>
+        </div>
+
+        <div class="stat-card">
+          <p>Total Purchases</p>
+          <h2 id="reportPurchases">₹6,75,000</h2>
+        </div>
+
+        <div class="stat-card">
+          <p>Rice Produced</p>
+          <h2 id="reportProduction">3,970 Kg</h2>
+        </div>
+
+        <div class="stat-card">
+          <p>Profit Estimate</p>
+          <h2 id="reportProfit">₹1,70,000</h2>
+        </div>
+      </div>
+
+      <!-- REPORT FILTER -->
+
+      <div class="inventory-actions">
+        <div class="search-box">
+          <select id="reportType">
+            <option value="overview">Business Overview</option>
+
+            <option value="sales">Sales Report</option>
+
+            <option value="production">Production Report</option>
+
+            <option value="purchase">Purchase Report</option>
+          </select>
+        </div>
+
+        <div class="action-buttons">
+          <button class="add-stock-btn" onclick="generateReport()">
+            Generate Report
+          </button>
+        </div>
+      </div>
+
+      <!-- REPORT CARDS -->
+
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <div class="card-header">
+            <div>
+              <h3>Monthly Sales</h3>
+              <p>Sales performance</p>
+            </div>
+          </div>
+
+          <div class="report-bars">
+            <div class="report-row">
+              <span>Jan</span>
+              <div class="bar">
+                <span style="width: 55%"></span>
+              </div>
+              <strong>₹1.2L</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Feb</span>
+              <div class="bar">
+                <span style="width: 70%"></span>
+              </div>
+              <strong>₹1.5L</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Mar</span>
+              <div class="bar">
+                <span style="width: 85%"></span>
+              </div>
+              <strong>₹1.8L</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Apr</span>
+              <div class="bar">
+                <span style="width: 65%"></span>
+              </div>
+              <strong>₹1.4L</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-card">
+          <div class="card-header">
+            <div>
+              <h3>Monthly Production</h3>
+              <p>Production performance</p>
+            </div>
+          </div>
+
+          <div class="report-bars">
+            <div class="report-row">
+              <span>Jan</span>
+              <div class="bar">
+                <span style="width: 60%"></span>
+              </div>
+              <strong>3,200 Kg</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Feb</span>
+              <div class="bar">
+                <span style="width: 75%"></span>
+              </div>
+              <strong>3,800 Kg</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Mar</span>
+              <div class="bar">
+                <span style="width: 90%"></span>
+              </div>
+              <strong>4,200 Kg</strong>
+            </div>
+
+            <div class="report-row">
+              <span>Apr</span>
+              <div class="bar">
+                <span style="width: 70%"></span>
+              </div>
+              <strong>3,600 Kg</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrainFlow | Inventory</title>
+
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <>
+    <div class="dashboard">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">🌾</div>
+          <div>
+            <h2>GrainFlow</h2>
+            <span>Rice Mill Management</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-menu">
+          <a href="dashboard.html"> 🏠 <span>Dashboard</span> </a>
+
+          <a href="inventory.html" class="active">
+            🌾 <span>Inventory</span>
+          </a>
+          <a href="../pages/production.html">
+    ⚙️ <span>Production</span>
+</a>
+
+          <a href="#"> ⚙️ <span>Production</span> </a>
+
+          <a href="#"> 📦 <span>Products</span> </a>
+
+          <a href="#"> 🛒 <span>Purchases</span> </a>
+
+          <a href="#"> 💰 <span>Sales</span> </a>
+
+          <a href="#"> 👥 <span>Customers</span> </a>
+
+          <a href="#"> 🚚 <span>Suppliers</span> </a>
+
+          <a href="#"> 📊 <span>Reports</span> </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="#">⚙️ <span>Settings</span></a>
+          <a href="login.html">🚪 <span>Logout</span></a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- HEADER -->
+        <header class="topbar">
+          <div>
+            <h1>Inventory</h1>
+            <p>Manage your rice mill stock and inventory.</p>
+          </div>
+
+          <div class="profile">
+            <div class="profile-icon">A</div>
+
+            <div>
+              <strong>Admin</strong>
+              <small>Administrator</small>
+            </div>
+          </div>
+        </header>
+
+        <!-- INVENTORY SUMMARY -->
+        <section class="stats">
+          <div class="stat-card">
+            <div class="stat-icon">🌾</div>
+
+            <div>
+              <p>Total Paddy</p>
+              <h2 id="totalPaddy">5,000 Kg</h2>
+              <span>Raw Material</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">🍚</div>
+
+            <div>
+              <p>Total Rice</p>
+              <h2 id="totalRice">3,250 Kg</h2>
+              <span>Finished Products</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📦</div>
+
+            <div>
+              <p>Total Products</p>
+              <h2>8</h2>
+              <span>Active Items</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⚠️</div>
+
+            <div>
+              <p>Low Stock</p>
+              <h2>3 Items</h2>
+              <span>Needs attention</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACTION BAR -->
+        <section class="inventory-actions">
+          <div class="search-box">
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search inventory..."
+            />
+          </div>
+
+          <div class="action-buttons">
+            <button class="add-stock-btn" onclick="openModal()">
+              + Add Stock
+            </button>
+
+            <button class="stock-out-btn" onclick="openStockOutModal()">
+                − Stock Out
+            </button>
+          </div>
+        </section>
+
+        <!-- INVENTORY TABLE -->
+        <section class="panel transactions">
+          <div class="panel-header">
+            <div>
+              <h3>Current Inventory</h3>
+              <p>All available stock in the rice mill</p>
+            </div>
+
+            <select id="categoryFilter">
+              <option value="all">All Categories</option>
+              <option value="Raw Material">Raw Material</option>
+              <option value="Finished Rice">Finished Rice</option>
+              <option value="By Product">By Product</option>
+            </select>
+          </div>
+
+          <div class="table-container">
+            <table id="inventoryTable">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td><strong>Paddy</strong></td>
+
+                  <td>Raw Material</td>
+
+                  <td>5,000</td>
+
+                  <td>Kg</td>
+
+                  <td>
+                    <span class="status completed"> Available </span>
+                  </td>
+
+                  <td>
+                    <button class="edit-btn">Edit</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Basmati Rice</strong></td>
+
+                  <td>Finished Rice</td>
+
+                  <td>1,250</td>
+
+                  <td>Kg</td>
+
+                  <td>
+                    <span class="status completed"> Available </span>
+                  </td>
+
+                  <td>
+                    <button class="edit-btn">Edit</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Sona Masuri</strong></td>
+
+                  <td>Finished Rice</td>
+
+                  <td>850</td>
+
+                  <td>Kg</td>
+
+                  <td>
+                    <span class="status completed"> Available </span>
+                  </td>
+
+                  <td>
+                    <button class="edit-btn">Edit</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td><strong>Broken Rice</strong></td>
+
+                  <td>By Product</td>
+
+                  <td>180</td>
+
+                  <td>Kg</td>
+
+                  <td>
+                    <span class="status pending"> Low Stock </span>
+                  </td>
+
+                  <td>
+                    <button class="edit-btn">Edit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- ADD STOCK MODAL -->
+
+    <div class="modal-overlay" id="stockModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <h2>Add New Stock</h2>
+            <p>Add a new inventory item</p>
+          </div>
+
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+
+        <form id="stockForm">
+          <label>Item Name</label>
+
+          <input
+            type="text"
+            id="itemName"
+            placeholder="Example: Paddy"
+            required
+          />
+
+          <label>Category</label>
+
+          <select id="itemCategory" required>
+            <option value="">Select Category</option>
+
+            <option value="Raw Material">Raw Material</option>
+
+            <option value="Finished Rice">Finished Rice</option>
+
+            <option value="By Product">By Product</option>
+          </select>
+
+          <label>Quantity</label>
+
+          <input
+            type="number"
+            id="itemQuantity"
+            placeholder="Enter quantity"
+            min="1"
+            required
+          />
+
+          <label>Unit</label>
+
+          <select id="itemUnit">
+            <option value="Kg">Kg</option>
+            <option value="Bags">Bags</option>
+            <option value="Tons">Tons</option>
+          </select>
+
+          <label>Supplier</label>
+
+          <input type="text" id="supplier" placeholder="Supplier name" />
+
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn" onclick="closeModal()">
+              Cancel
+            </button>
+
+            <button type="submit" class="add-stock-btn">Add Stock</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+<!-- STOCK OUT MODAL -->
+
+<div class="modal-overlay" id="stockOutModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Stock Out</h2>
+                <p>Remove stock from inventory</p>
+            </div>
+
+            <button class="close-btn" onclick="closeStockOutModal()">
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="stockOutForm">
+
+            <label>Select Item</label>
+
+            <select id="stockOutItem" required>
+                <option value="">Select Item</option>
+                <option value="Paddy">Paddy</option>
+                <option value="Basmati Rice">Basmati Rice</option>
+                <option value="Sona Masuri">Sona Masuri</option>
+                <option value="Broken Rice">Broken Rice</option>
+            </select>
+
+
+            <label>Quantity</label>
+
+            <input
+                type="number"
+                id="stockOutQuantity"
+                placeholder="Enter quantity"
+                min="1"
+                required
+            >
+
+
+            <label>Reason</label>
+
+            <select id="stockOutReason" required>
+
+                <option value="">
+                    Select Reason
+                </option>
+
+                <option value="Sale">
+                    Sale
+                </option>
+
+                <option value="Production">
+                    Production
+                </option>
+
+                <option value="Damaged">
+                    Damaged
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <div class="modal-buttons">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeStockOutModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="stock-out-btn"
+                >
+                    - Stock Out
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+    <script src="../js/inventory.js"></script>
+  </body>
+</html>

@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GrainFlow | Dashboard</title>
+
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">🌾</div>
+          <div>
+            <h2>GrainFlow</h2>
+            <span>Rice Mill Management</span>
+          </div>
+        </div>
+        <nav class="sidebar-menu">
+          <a href="dashboard.html" class="active">
+            🏠 <span>Dashboard</span>
+          </a>
+
+          <a href="inventory.html"> 🌾 <span>Inventory</span> </a>
+
+          <a href="../pages/production.html"> ⚙️ <span>Production</span> </a>
+
+          <a href="../pages/sales.html"> 💰 <span>Sales</span> </a>
+
+          <a href="../pages/purchases.html"> 🛒 <span>Purchases</span> </a>
+
+          <a href="../pages/customers.html"> 👥 <span>Customers</span> </a>
+
+          <a href="../pages/suppliers.html"> 🚚 <span>Suppliers</span> </a>
+
+          <a href="../pages/reports.html"> 📊 <span>Reports</span> </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="#">⚙️ <span>Settings</span></a>
+          <a href="login.html">🚪 <span>Logout</span></a>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- TOP BAR -->
+        <header class="topbar">
+          <div>
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here's what's happening today.</p>
+          </div>
+
+          <div class="profile">
+            <div class="profile-icon">A</div>
+            <div>
+              <strong>Admin</strong>
+              <small>Administrator</small>
+            </div>
+          </div>
+        </header>
+
+        <!-- STAT CARDS -->
+        <section class="stats">
+          <div class="stat-card">
+            <div class="stat-icon">🌾</div>
+            <div>
+              <p>Total Stock</p>
+              <h2 id="dashboardTotalStock">12,450 Kg</h2>
+              <span>+8.2% this month</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⚙️</div>
+            <div>
+              <p>Today's Production</p>
+              <h2 id="dashboardProduction">8,250 Kg</h2>
+              <span>+5.4% from yesterday</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div>
+              <p>Total Sales</p>
+              <h2 id="dashboardSales">1,245 Bags</h2>
+              <span>+12.5% this month</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">₹</div>
+            <div>
+              <p>Total Revenue</p>
+              <h2 id="dashboardRevenue">₹8,45,000</h2>
+              <span>+10.8% this month</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTENT GRID -->
+        <section class="dashboard-grid">
+          <!-- PRODUCTION -->
+          <div class="panel production-panel">
+            <div class="panel-header">
+              <div>
+                <h3>Production Overview</h3>
+                <p>Monthly production</p>
+              </div>
+
+              <select>
+                <option>2026</option>
+                <option>2025</option>
+              </select>
+            </div>
+
+            <div class="chart-placeholder">
+              <div class="bar b1"><span>Jan</span></div>
+              <div class="bar b2"><span>Feb</span></div>
+              <div class="bar b3"><span>Mar</span></div>
+              <div class="bar b4"><span>Apr</span></div>
+              <div class="bar b5"><span>May</span></div>
+              <div class="bar b6"><span>Jun</span></div>
+            </div>
+          </div>
+
+          <!-- LOW STOCK -->
+          <div class="panel">
+            <div class="panel-header">
+              <div>
+                <h3>Low Stock Alerts</h3>
+                <p>Items requiring attention</p>
+              </div>
+
+              <span class="alert-count">3</span>
+            </div>
+
+            <div class="stock-item">
+              <div>
+                <strong>Basmati Rice</strong>
+                <small>Current: 120 Kg</small>
+              </div>
+              <span class="danger">Low Stock</span>
+            </div>
+
+            <div class="stock-item">
+              <div>
+                <strong>Broken Rice</strong>
+                <small>Current: 85 Kg</small>
+              </div>
+              <span class="danger">Low Stock</span>
+            </div>
+
+            <div class="stock-item">
+              <div>
+                <strong>Paddy</strong>
+                <small>Current: 210 Kg</small>
+              </div>
+              <span class="warning">Reorder</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- RECENT TRANSACTIONS -->
+        <section class="panel transactions">
+          <div class="panel-header">
+            <div>
+              <h3>Recent Transactions</h3>
+              <p>Latest sales and purchases</p>
+            </div>
+
+            <button class="view-btn">View All</button>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Transaction ID</th>
+                  <th>Type</th>
+                  <th>Customer / Supplier</th>
+                  <th>Quantity</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>#GF1025</td>
+                  <td>Sale</td>
+                  <td>ABC Traders</td>
+                  <td>50 Bags</td>
+                  <td>₹42,500</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+
+                <tr>
+                  <td>#GF1024</td>
+                  <td>Purchase</td>
+                  <td>Ravi Farms</td>
+                  <td>500 Kg</td>
+                  <td>₹18,000</td>
+                  <td><span class="status completed">Completed</span></td>
+                </tr>
+
+                <tr>
+                  <td>#GF1023</td>
+                  <td>Sale</td>
+                  <td>Shree Stores</td>
+                  <td>30 Bags</td>
+                  <td>₹25,500</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const savedStock = localStorage.getItem("grainflowTotalStock");
+
+      if (savedStock !== null) {
+        document.getElementById("dashboardTotalStock").innerText =
+          Number(savedStock).toLocaleString() + " Kg";
+      }
+    </script>
+    <script>
+      const savedProduction = localStorage.getItem("grainflowProduction");
+
+      if (savedProduction !== null) {
+        document.getElementById("dashboardProduction").innerText =
+          Number(savedProduction).toLocaleString() + " Kg";
+      }
+    </script>
+    <script>
+      const savedSales = localStorage.getItem("grainflowSales");
+
+      if (savedSales !== null) {
+        document.getElementById("dashboardSales").innerText =
+          Number(savedSales).toLocaleString() + " Bags";
+      }
+    </script>
+    <script>
+      const savedRevenue = localStorage.getItem("grainflowRevenue");
+
+      if (savedRevenue !== null) {
+        document.getElementById("dashboardRevenue").innerText =
+          "₹" + Number(savedRevenue).toLocaleString("en-IN");
+      }
+    </script>
+  </body>
+</html>

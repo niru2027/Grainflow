@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>GrainFlow | Production</title>
+
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-icon">🌾</div>
+
+          <div>
+            <h2>GrainFlow</h2>
+            <span>Rice Mill Management</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-menu">
+          <a href="../HTML/dashboard.html"> 🏠 <span>Dashboard</span> </a>
+
+          <a href="../HTML/inventory.html"> 🌾 <span>Inventory</span> </a>
+
+          <a href="production.html" class="active">
+            ⚙️ <span>Production</span>
+          </a>
+
+          <a href="sales.html"> 💰 <span>Sales</span> </a>
+
+          <a href="purchases.html"> 🛒 <span>Purchases</span> </a>
+
+          <a href="customers.html"> 👥 <span>Customers</span> </a>
+
+          <a href="suppliers.html"> 🚚 <span>Suppliers</span> </a>
+
+          <a href="reports.html"> 📊 <span>Reports</span> </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <a href="../HTML/login.html"> 🚪 <span>Logout</span> </a>
+        </div>
+      </aside>
+      <!-- MAIN CONTENT -->
+      <main class="main-content">
+        <!-- HEADER -->
+        <header class="topbar">
+          <div>
+            <h1>Production</h1>
+            <p>Manage rice production and processing.</p>
+          </div>
+
+          <div class="profile">
+            <div class="profile-icon">A</div>
+
+            <div>
+              <strong>Admin</strong>
+              <small>Administrator</small>
+            </div>
+          </div>
+        </header>
+
+        <!-- PRODUCTION CONTENT -->
+
+        <section class="stats">
+          <div class="stat-card">
+            <div class="stat-icon">🌾</div>
+
+            <div>
+              <p>Today's Paddy</p>
+              <h2 id="todayPaddy">2,500 Kg</h2>
+              <span>Raw Material</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⚙️</div>
+
+            <div>
+              <p>In Production</p>
+              <h2 id="inProduction">1,800 Kg</h2>
+              <span>Processing</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">🍚</div>
+
+            <div>
+              <p>Rice Produced</p>
+              <h2 id="riceProducedTotal">1,350 Kg</h2>
+              <span>Finished Rice</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📊</div>
+
+            <div>
+              <p>Efficiency</p>
+              <h2 id="efficiency">75%</h2>
+              <span>Production Rate</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- PRODUCTION ACTION -->
+
+        <section class="inventory-actions">
+          <div>
+            <h3>Production Records</h3>
+            <p>Track daily rice production.</p>
+          </div>
+
+          <button class="add-stock-btn" onclick="openProductionModal()">
+            + Start Production
+          </button>
+        </section>
+
+        <!-- PRODUCTION TABLE -->
+
+        <section class="panel transactions">
+          <div class="panel-header">
+            <div>
+              <h3>Recent Production</h3>
+              <p>Latest production records</p>
+            </div>
+          </div>
+
+          <div class="table-container">
+            <table id="productionTable">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Batch ID</th>
+                  <th>Paddy Used</th>
+                  <th>Rice Produced</th>
+                  <th>By Product</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>12 Sep 2026</td>
+
+                  <td>
+                    <strong>GF-001</strong>
+                  </td>
+
+                  <td>2,000 Kg</td>
+
+                  <td>1,500 Kg</td>
+
+                  <td>350 Kg</td>
+
+                  <td>
+                    <span class="status completed"> Completed </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>11 Sep 2026</td>
+
+                  <td>
+                    <strong>GF-002</strong>
+                  </td>
+
+                  <td>1,500 Kg</td>
+
+                  <td>1,120 Kg</td>
+
+                  <td>280 Kg</td>
+
+                  <td>
+                    <span class="status completed"> Completed </span>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>10 Sep 2026</td>
+
+                  <td>
+                    <strong>GF-003</strong>
+                  </td>
+
+                  <td>2,500 Kg</td>
+
+                  <td>1,800 Kg</td>
+
+                  <td>450 Kg</td>
+
+                  <td>
+                    <span class="status pending"> Processing </span>
+                  </td>
+                  <td>
+                    <button class="edit-btn">Edit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+    <!-- PRODUCTION MODAL -->
+
+    <div class="modal-overlay" id="productionModal">
+      <div class="modal">
+        <div class="modal-header">
+          <div>
+            <h2>Start Production</h2>
+            <p>Create a new production batch</p>
+          </div>
+
+          <button class="close-btn" onclick="closeProductionModal()">×</button>
+        </div>
+
+        <form id="productionForm">
+          <label>Batch ID</label>
+
+          <input
+            type="text"
+            id="batchId"
+            placeholder="Example: GF-004"
+            required
+          />
+
+          <label>Paddy Quantity</label>
+
+          <input
+            type="number"
+            id="paddyQuantity"
+            placeholder="Enter paddy quantity"
+            min="1"
+            required
+          />
+          <label>Rice Produced</label>
+
+          <input
+            type="number"
+            id="riceProduced"
+            placeholder="Auto calculated"
+            min="0"
+            readonly
+          />
+
+          <label>By Product</label>
+
+          <input
+            type="number"
+            id="byProduct"
+            placeholder="Auto calculated"
+            min="0"
+            readonly
+          />
+
+          <label>Production Date</label>
+
+          <input type="date" id="productionDate" required />
+
+          <label>Production Status</label>
+
+          <select id="productionStatus" required>
+            <option value="">Select Status</option>
+
+            <option value="Processing">Processing</option>
+
+            <option value="Completed">Completed</option>
+          </select>
+
+          <div class="modal-buttons">
+            <button
+              type="button"
+              class="cancel-btn"
+              onclick="closeProductionModal()"
+            >
+              Cancel
+            </button>
+
+            <button type="submit" class="add-stock-btn">
+              Start Production
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script src="../js/production.js"></script>
+  </body>
+</html>
